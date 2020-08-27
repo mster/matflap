@@ -1,0 +1,29 @@
+{
+  "name": "matflap",
+  "version": "0.0.0",
+  "description": "Faster Array.prototype.flatMap",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "tape": "^5.0.1"
+  },
+  "scripts": {
+    "test": "tape ./test/test.js",
+    "benchmark": "node ./test/benchmark.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mster/matflap.git"
+  },
+  "keywords": [
+    "array",
+    "flatmap"
+  ],
+  "author": "Michael Sterpka <michaelsterpka@gmail.com> (https://github.com/mster)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mster/matflap/issues"
+  },
+  "homepage": "https://github.com/mster/matflap#readme"
+}
