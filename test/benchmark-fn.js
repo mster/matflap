@@ -12,10 +12,10 @@ const suiteA6 = new Suite()
 const A1 = new Array(10).fill('⬢')
 const A3 = new Array(1e3).fill('⬢')
 const A6 = new Array(1e6).fill('⬢')
-const fn = (e) => e
+const fn = (e) => [e, e.repeat(1), e.repeat(2)]
 
-console.log('benchmark.js')
-console.log('fn = (e) => e;\n')
+console.log('benchmark-fn.js')
+console.log('fn = (e) => [e, e.repeat(1), e.repeat(2)];\n')
 
 suiteA1
   .add('Array.prototype.flatMap.call', function () {
