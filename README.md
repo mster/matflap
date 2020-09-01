@@ -2,7 +2,9 @@
 
 Faster alternative to Array.prototype.flatMap with support for Node v6+
 
-## zoom ?
+`const flatMapd = matflap(array, mapFunction)`
+
+## But does it zoom ?
 
 **npm run benchmark**
 
@@ -53,9 +55,7 @@ matFlap x 6.49 ops/sec ±3.76% (21 runs sampled)
 fastest is matFlap
 ```
 
-`const flat = matflap(array, mapFunction)`
-
-## Node 6
+## Backwards compatible, huh?
 
 matFlap retains functional parity with `Array.prototype.flatMap` while using ES features that have been in V8 since v4.9 (Node v6+).
 

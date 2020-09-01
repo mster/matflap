@@ -1,6 +1,6 @@
 {
   "name": "matflap",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Faster Array.prototype.flatMap",
   "main": "index.js",
   "dependencies": {},
