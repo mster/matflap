@@ -9,14 +9,22 @@ const suiteA1 = new Suite()
 const suiteA3 = new Suite()
 const suiteA6 = new Suite()
 
-const A1 = new Array(10).fill('⬢')
-const A3 = new Array(1e3).fill('⬢')
-const A6 = new Array(1e6).fill('⬢')
-const fn = (e) => e
+function halfEmpty (A) {
+  A.forEach((v, i) => {
+    if (i % 2 === 0) A[i] = i
+  })
+  return A
+}
 
-console.log('benchmark.js')
-console.log('fn = (e) => e;\n')
+const A1 = halfEmpty(new Array(10))
+const A3 = halfEmpty(new Array(1e3))
+const A6 = halfEmpty(new Array(1e6))
+const fn = e => e
 
+console.log('benchmark-empty.js')
+console.log('fn = e => e;\n')
+
+console.log(`Array.length = ${A1.length}`)
 suiteA1
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A1, fn)
@@ -38,6 +46,7 @@ suiteA1
   })
   .run()
 
+console.log(`Array.length = ${A3.length}`)
 suiteA3
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A3, fn)
@@ -59,6 +68,7 @@ suiteA3
   })
   .run()
 
+console.log(`Array.length = ${A6.length}`)
 suiteA6
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A6, fn)

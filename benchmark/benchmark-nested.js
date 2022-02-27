@@ -9,14 +9,15 @@ const suiteA1 = new Suite()
 const suiteA3 = new Suite()
 const suiteA6 = new Suite()
 
-const A1 = new Array(10).fill('⬢')
-const A3 = new Array(1e3).fill('⬢')
-const A6 = new Array(1e6).fill('⬢')
-const fn = (e) => [e, e.repeat(1), e.repeat(2)]
+const A1 = new Array(10).fill([1, 2])
+const A3 = new Array(1e3).fill([3, 4])
+const A6 = new Array(1e6).fill([5, 6])
+const fn = (e) => [e,, e]
 
-console.log('benchmark-fn.js')
-console.log('fn = (e) => [e, e.repeat(1), e.repeat(2)];\n')
+console.log('benchmark-nested.js')
+console.log('fn = (e) => [e,, e];\n')
 
+console.log(`Array.length = ${A1.length}`)
 suiteA1
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A1, fn)
@@ -38,6 +39,7 @@ suiteA1
   })
   .run()
 
+console.log(`Array.length = ${A3.length}`)
 suiteA3
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A3, fn)
@@ -59,6 +61,7 @@ suiteA3
   })
   .run()
 
+console.log(`Array.length = ${A6.length}`)
 suiteA6
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A6, fn)
@@ -76,6 +79,8 @@ suiteA6
     console.log(String(event.target))
   })
   .on('complete', function () {
-    console.log(`fastest is ${this.filter('fastest').map('name')}\n`)
+    console.log(`fastest is ${this.filter('fastest').map('name')}`)
   })
   .run()
+
+console.log(`${'-'.repeat(40)}\n`)

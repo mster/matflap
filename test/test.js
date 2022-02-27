@@ -25,7 +25,7 @@ tape('nested array', function (t) {
   t.end()
 })
 
-tape("'noop' map function", function (t) {
+tape('noop map', function (t) {
   const a = new Array(100).fill(10)
   const fn = (e) => e
 
@@ -36,7 +36,7 @@ tape("'noop' map function", function (t) {
   t.end()
 })
 
-tape('map function: array return', function (t) {
+tape('nested', function (t) {
   const a = new Array(100).fill(10)
   const fn = (e) => [e]
 
@@ -47,7 +47,18 @@ tape('map function: array return', function (t) {
   t.end()
 })
 
-tape('map function: multiple element return', function (t) {
+tape('double nested', function (t) {
+  const a = new Array(100).fill(10)
+  const fn = (e) => [[e]]
+
+  const actual = matflap(a, fn)
+  const expected = a.flatMap(fn)
+
+  t.deepEqual(actual, expected)
+  t.end()
+})
+
+tape('multiple', function (t) {
   const a = new Array(100).fill(10)
   const fn = (e) => [e, e * 2, e * 3]
 
@@ -58,13 +69,35 @@ tape('map function: multiple element return', function (t) {
   t.end()
 })
 
-tape('map function: nested array return', function (t) {
-  const a = new Array(100).fill(10)
-  const fn = (e) => [[e]]
+tape('deeply nested', function (t) {
+  const a = new Array(100).fill([[[[['string'], 'string']]]])
+  const fn = e => e + '-'
 
-  const actual = matflap(a, fn)
+  const acutal = matflap(a, fn)
   const expected = a.flatMap(fn)
 
-  t.deepEqual(actual, expected)
+  t.deepEqual(acutal, expected)
+  t.end()
+})
+
+tape('undefined', function (t) {
+  const a = new Array(100).fill(undefined)
+  const fn = e => e
+
+  const acutal = matflap(a, fn)
+  const expected = a.flatMap(fn)
+
+  t.deepEqual(acutal, expected)
+  t.end()
+})
+
+tape('empty', function (t) {
+  const a = new Array(100)
+  const fn = e => e
+
+  const acutal = matflap(a, fn)
+  const expected = a.flatMap(fn)
+
+  t.deepEqual(acutal, expected)
   t.end()
 })

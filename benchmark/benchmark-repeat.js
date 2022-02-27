@@ -12,11 +12,12 @@ const suiteA6 = new Suite()
 const A1 = new Array(10).fill('⬢')
 const A3 = new Array(1e3).fill('⬢')
 const A6 = new Array(1e6).fill('⬢')
-const fn = (e) => e
+const fn = (e) => [e, e.repeat(1), e.repeat(2)]
 
-console.log('benchmark.js')
-console.log('fn = (e) => e;\n')
+console.log('benchmark-repeat.js')
+console.log('fn = (e) => [e, e.repeat(1), e.repeat(2)];\n')
 
+console.log(`Array.length = ${A1.length}`)
 suiteA1
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A1, fn)
@@ -38,6 +39,7 @@ suiteA1
   })
   .run()
 
+console.log(`Array.length = ${A3.length}`)
 suiteA3
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A3, fn)
@@ -59,6 +61,7 @@ suiteA3
   })
   .run()
 
+console.log(`Array.length = ${A6.length}`)
 suiteA6
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A6, fn)

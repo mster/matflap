@@ -1,6 +1,6 @@
 {
   "name": "matflap",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Faster Array.prototype.flatMap",
   "main": "index.js",
   "dependencies": {},
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "tape ./test/test.js",
-    "benchmark": "node ./benchmark/benchmark.js && node ./benchmark/benchmark-fn.js && node ./benchmark/benchmark-parse.js"
+    "benchmark": "node ./benchmark/benchmark.js && node ./benchmark/benchmark-empty.js && node ./benchmark/benchmark-nested.js && node ./benchmark/benchmark-parse.js && node ./benchmark/benchmark-repeat.js"
   },
   "repository": {
     "type": "git",

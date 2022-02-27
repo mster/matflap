@@ -17,6 +17,7 @@ const fn = (e) => JSON.parse(e)
 console.log('benchmark-parse.js')
 console.log('fn = (e) => JSON.parse(e);\n')
 
+console.log(`Array.length = ${A1.length}`)
 suiteA1
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A1, fn)
@@ -38,6 +39,7 @@ suiteA1
   })
   .run()
 
+console.log(`Array.length = ${A3.length}`)
 suiteA3
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A3, fn)
@@ -59,6 +61,7 @@ suiteA3
   })
   .run()
 
+console.log(`Array.length = ${A6.length}`)
 suiteA6
   .add('Array.prototype.flatMap.call', function () {
     Array.prototype.flatMap.call(A6, fn)
@@ -76,6 +79,8 @@ suiteA6
     console.log(String(event.target))
   })
   .on('complete', function () {
-    console.log(`fastest is ${this.filter('fastest').map('name')}\n`)
+    console.log(`fastest is ${this.filter('fastest').map('name')}`)
   })
   .run()
+
+console.log(`${'-'.repeat(40)}\n`)
